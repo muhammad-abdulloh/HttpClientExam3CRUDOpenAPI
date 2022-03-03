@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,11 +30,7 @@ namespace HttpClientExam3.Service
         /// <returns></returns>
         public async Task<Movie> CreateAsync(Movie movie)
         {
-            string json = JsonConvert.SerializeObject(movie);
-
-            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = await _httpClient.PostAsync(Constants.MOVIE_POST, content);
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<Movie>(Constants.MOVIE_POST, movie);
 
             string message = await response.Content.ReadAsStringAsync();
 
@@ -49,10 +46,7 @@ namespace HttpClientExam3.Service
         {
             var response = await _httpClient.DeleteAsync(Constants.MOVIE_DELETE + $"?id={id}");
 
-            if (response.IsSuccessStatusCode)
-                return true;
-
-            return false;
+            return response.IsSuccessStatusCode;
         }
 
 
