@@ -21,7 +21,7 @@ namespace HttpClientExam3
                 Console.WriteLine(item.Title + " - " + item.Author.FirstName);
             }
             */
-            
+
             /** Get Done
             var response = _movieService.GetAsync(60).Result;
             Console.WriteLine(response.Title);
@@ -67,7 +67,10 @@ namespace HttpClientExam3
             Console.WriteLine(update.Author.FirstName);
             */
 
-
+            /** UpdatePatch Done
+            var patchUpdate = await _movieService.UpdatePatchAsync(48, 2);
+            Console.WriteLine(patchUpdate.Title);
+            */
         }
     }
 }

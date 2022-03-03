@@ -105,6 +105,19 @@ namespace HttpClientExam3.Service
             return null;
         }
 
+        public async Task<Movie> UpdatePatchAsync(long movieId, long authorId)
+        {
+            string api = Constants.MOVIE_PATCH_UPDATE + $"/{movieId}?authorId={authorId}";
 
+            var response = await _httpClient.PatchAsync(api, null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Movie>(result);
+            }
+
+            return null;
+        }
     }
 }

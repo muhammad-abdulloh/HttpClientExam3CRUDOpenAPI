@@ -17,6 +17,8 @@ namespace HttpClientExam3.Service
 
         Task<Movie> UpdateAsync(long id, Movie movie);
 
+        Task<Movie> UpdatePatchAsync(long movieId, long authorId);
+
         Task<bool> DeleteAsync(long id);
     }
 }

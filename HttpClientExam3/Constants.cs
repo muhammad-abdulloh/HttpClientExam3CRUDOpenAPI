@@ -20,5 +20,7 @@ namespace HttpClientExam3
         public static readonly string MOVIE_DELETE = Path.Combine(BASE_URL, "Movie/DeleteMovie");
 
         public static readonly string MOVIE_UPDATE = Path.Combine(BASE_URL, "Movie/UpdateMovie");
+
+        public static readonly string MOVIE_PATCH_UPDATE = Path.Combine(BASE_URL, "Movie/UpdateUserOfMovie");
     }
 }
